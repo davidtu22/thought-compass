@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#F3EEE1;background-image:repeating-linear-gradient(to bottom,transparent,transparent 37px,rgba(43,38,32,.055) 37px,rgba(43,38,32,.055) 38px);font-family:"Source Serif 4",Georgia,serif;color:#2B2620}
+a{color:#2F5570;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#96352A}
+textarea,input{font-family:"Source Serif 4",Georgia,serif}
+textarea::placeholder{color:#6B6255;font-style:italic}
+textarea:focus{outline:none;border-color:#96352A}
+@media print{.noprint{display:none}}
+</style></helmet>
+
+<div style="max-width:960px;margin:0 auto;padding:0 24px 80px">
+
+<div style="padding:56px 0 28px;border-bottom:1px solid #DAD0BC">
+<div style="font:600 .76rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#948A7A;margin-bottom:16px">Worksheet · Thought Compass · voices</div>
+<h1 style="margin:0 0 14px;font:500 clamp(2.1rem,4.5vw,3rem)/1.05 Newsreader,Georgia,serif">Voice bible</h1>
+<p style="margin:0;max-width:56ch;font:400 1.2rem/1.45 Newsreader,Georgia,serif;font-style:italic;color:#6B6255;text-wrap:pretty">All twelve, editable. Four are yours as written. Eight are my drafts — overwrite them.</p>
+<div style="display:flex;flex-wrap:wrap;gap:22px;margin:24px 0 0;padding-top:18px;border-top:1px dashed #DAD0BC;font:400 .8rem/1.8 'IBM Plex Mono',monospace;color:#948A7A">
+<span><b style="color:#6B6255;font-weight:600">{{ yoursCount }} yours</b> · {{ draftCount }} drafts awaiting you</span>
+<span><b style="color:#6B6255;font-weight:600">Saves as you type</b> — in this browser</span>
+<span><b style="color:#6B6255;font-weight:600">Export</b> at the bottom</span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:28px 44px;padding:34px 0;border-bottom:1px solid #DAD0BC;align-items:flex-start">
+<div style="flex:1 1 420px;min-width:0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">I.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">The five fields</h2></div>
+<div style="display:flex;flex-direction:column;gap:15px;max-width:62ch">
+<div><div style="font:600 .74rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:4px">Wants</div><p style="margin:0;font:400 1rem/1.55 'Source Serif 4',serif">The single thing it is always pushing for. This buys the agree / disagree split for free — knowing what a voice wants tells me what it says on any statement in the grid, in either direction.</p></div>
+<div><div style="font:600 .74rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:4px">Wrong about</div><p style="margin:0;font:400 1rem/1.55 'Source Serif 4',serif">The direction it is reliably mistaken in. The difference between a character and a mouthpiece. A voice that is simply correct is a narrator; a voice that is wrong the same way every time is someone you know.</p></div>
+<div><div style="font:600 .74rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:4px">Never</div><p style="margin:0;font:400 1rem/1.55 'Source Serif 4',serif">Words, moves, registers that are out of character. The drift guard — around line 150 every voice starts sounding like every other voice, and this is what catches it. Be fussy and specific.</p></div>
+<div><div style="font:600 .74rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:4px">Diction</div><p style="margin:0;font:400 1rem/1.55 'Source Serif 4',serif">Sentence length, vocabulary, whether it addresses you directly. The field I match against. Three lines in your own hand beat any description of it.</p></div>
+<div><div style="font:600 .74rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:4px">Fights</div><p style="margin:0;font:400 1rem/1.55 'Source Serif 4',serif">One voice it interrupts, one it defers to. This powers the cross-talk pairs, and it now also decides which ordered-pair Thought a run can land on.</p></div>
+</div>
+</div>
+<aside style="flex:0 1 290px;min-width:250px;padding-top:8px;display:flex;flex-direction:column;gap:16px">
+<div style="border-left:2px solid #96352A;padding-left:14px">
+<div style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:5px">how to work —</div>
+<p style="margin:0;font:400 .82rem/1.6 'IBM Plex Mono',monospace;color:#A9483C">Take the eight drafts one at a time. Read the field, then either leave it or replace it. Leaving it is a real answer — it means I got the voice right.</p>
+</div>
+<div style="border-left:2px solid #2F5570;padding-left:14px">
+<div style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#2F5570;margin-bottom:5px">the one to check —</div>
+<p style="margin:0;font:400 .82rem/1.6 'IBM Plex Mono',monospace;color:#2F5570">Superstition. I wrote it as wrong in a way that keeps turning out useful, which may be too flattering. That is the voice where your read matters most.</p>
+</div>
+<div style="border-left:2px solid #6B6255;padding-left:14px">
+<div style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#6B6255;margin-bottom:5px">filled for you —</div>
+<p style="margin:0;font:400 .82rem/1.6 'IBM Plex Mono',monospace;color:#6B6255">You wrote “pick the other” on three of the defer slots. I picked; those are marked in the Fights field. Overwrite freely.</p>
+</div>
+</aside>
+</div>
+
+<div style="padding:34px 0 0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">II.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Twelve voices</h2></div>
+<p style="margin:0 0 26px;max-width:62ch;font:400 1rem/1.55 'Source Serif 4',serif;color:#6B6255">Grouped by cluster, in the order they appear in the app.</p>
+
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+<div style="margin-bottom:30px">
+<div style="display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #DAD0BC;padding-bottom:9px;margin-bottom:18px">
+<span style="font:600 .8rem 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:{{ g.color }}">{{ g.name }}</span>
+<span style="font:400 .72rem 'IBM Plex Mono',monospace;color:#948A7A">{{ g.note }}</span>
+</div>
+
+<sc-for list="{{ g.voices }}" as="v" hint-placeholder-count="3">
+<div style="background:#EAE2CF;border:1px solid {{ v.border }};border-radius:4px;padding:22px 24px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(43,38,32,.12)">
+<div style="display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DAD0BC;padding-bottom:14px;margin-bottom:18px">
+<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+<span style="font:500 1.3rem Newsreader,Georgia,serif;color:{{ v.color }}">{{ v.name }}</span>
+<span style="font:600 .62rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:{{ v.badgeBg }};color:{{ v.badgeFg }}">{{ v.badge }}</span>
+</div>
+<span style="font:400 .78rem/1.4 'IBM Plex Mono',monospace;color:#948A7A;max-width:38ch">{{ v.thought }}</span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
+<sc-for list="{{ v.fields }}" as="fl" hint-placeholder-count="5">
+<div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px">
+<span style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A">{{ fl.label }}</span>
+<span style="font:400 .64rem 'IBM Plex Mono',monospace;color:#6B6255">{{ fl.hint }}</span>
+</div>
+<textarea rows="3" value="{{ fl.val }}" onChange="{{ fl.onChange }}" placeholder="{{ fl.ph }}" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#F3EEE1;color:#2B2620;border-radius:3px;padding:10px 11px;font:400 .93rem/1.5 'Source Serif 4',serif;resize:vertical"></textarea>
+</div>
+</sc-for>
+</div>
+
+<div style="margin-top:22px;padding-top:18px;border-top:1px dashed #DAD0BC">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px">
+<span style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#2F5570">Three lines in your own hand</span>
+<span style="font:400 .66rem 'IBM Plex Mono',monospace;color:#6B6255">{{ v.lineNote }}</span>
+</div>
+<p style="margin:0 0 14px;font:400 .84rem/1.5 'Source Serif 4',serif;color:#6B6255;max-width:56ch">Any statement from the grid, or one you make up.</p>
+<div style="display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ v.lines }}" as="ln" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+<span style="flex:none;width:96px;padding-top:11px;font:500 .7rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6B6255">{{ ln.label }}</span>
+<textarea rows="2" value="{{ ln.val }}" onChange="{{ ln.onChange }}" placeholder="{{ ln.ph }}" style="flex:1 1 260px;min-width:0;box-sizing:border-box;border:1px solid #DAD0BC;background:#F3EEE1;color:{{ v.color }};border-radius:3px;padding:10px 11px;font:400 .9rem/1.5 'IBM Plex Mono',monospace;resize:vertical"></textarea>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+
+<div class="noprint" style="padding:16px 0 0;border-top:1px solid #DAD0BC">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">III.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Export</h2></div>
+<p style="margin:0 0 18px;max-width:62ch;font:400 1rem/1.55 'Source Serif 4',serif;color:#6B6255">{{ progressNote }}</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+<button onClick="{{ doExport }}" style="min-height:46px;padding:0 20px;border:1px solid #2B2620;background:#2B2620;color:#F3EEE1;border-radius:4px;font:500 .86rem 'IBM Plex Mono',monospace;cursor:pointer">{{ exportLabel }}</button>
+<button onClick="{{ doDrafts }}" style="min-height:46px;padding:0 20px;border:1px solid #DAD0BC;background:none;color:#6B6255;border-radius:4px;font:500 .86rem 'IBM Plex Mono',monospace;cursor:pointer">Export drafts only</button>
+<button onClick="{{ doReset }}" style="min-height:46px;padding:0 20px;border:1px solid #DAD0BC;background:none;color:#6B6255;border-radius:4px;font:500 .86rem 'IBM Plex Mono',monospace;cursor:pointer">Restore prefill</button>
+</div>
+<sc-if value="{{ showExport }}" hint-placeholder-val="{{ false }}">
+<textarea readOnly="{{ true }}" value="{{ exportText }}" rows="18" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#EAE2CF;color:#2B2620;border-radius:4px;padding:14px;font:400 .8rem/1.6 'IBM Plex Mono',monospace;resize:vertical"></textarea>
+</sc-if>
+</div>
+
+<div style="padding:30px 0 0;margin-top:30px;border-top:1px solid #DAD0BC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:400 .72rem 'IBM Plex Mono',monospace;color:#948A7A">
+<span>D. Tu, 2026. Companion to <a href="Thought Table.dc.html">the Thought table</a>.</span>
+<span>Twelve voices. Eight to correct.</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960}}">
+class Component extends DCLogic {
+  KEY = 'tc-voice-bible-v2';
+  clusters = [
+    { id:'ledger', name:'Ledger', color:'#2F5570', note:'the ones that reason' },
+    { id:'marrow', name:'Marrow', color:'#96352A', note:'the ones in the body' },
+    { id:'choir', name:'Choir', color:'#5A6B3A', note:'the ones that need a room' },
+    { id:'static', name:'Static', color:'#5B4B6B', note:'the ones that come in unbidden' }
+  ];
+  voices = [
+    { id:'actuary', n:'Actuary', c:'ledger', col:'#2F5570', src:'yours', thought:'A Ledger That Reads Back' },
+    { id:'histor', n:'Historiography', c:'ledger', col:'#2F5570', src:'draft', thought:'The Minutes Of A Meeting Like This' },
+    { id:'badfaith', n:'Bad Faith', c:'ledger', col:'#4A4A8C', src:'draft', thought:'Nobody Asked You' },
+    { id:'adrenal', n:'Adrenal', c:'marrow', col:'#96352A', src:'draft', thought:'Settle It Now' },
+    { id:'hunger', n:'Hunger', c:'marrow', col:'#8A5A22', src:'yours', thought:'Rent Due Friday' },
+    { id:'fatigue', n:'Fatigue', c:'marrow', col:'#6E5A44', src:'draft', thought:'Fourth Year, Four A.M.' },
+    { id:'committee', n:'Committee', c:'choir', col:'#5A6B3A', src:'yours', thought:"The Clerk's Patience" },
+    { id:'roomread', n:'Room Read', c:'choir', col:'#2F6B52', src:'draft', thought:'How This Lands' },
+    { id:'solidarity', n:'Solidarity', c:'choir', col:'#7A6A1E', src:'draft', thought:'The First Person Plural' },
+    { id:'supersti', n:'Superstition', c:'static', col:'#4A3E8C', src:'draft', thought:'The Pattern Insists' },
+    { id:'nostalgia', n:'Nostalgia', c:'static', col:'#8C3A5A', src:'draft', thought:'The Bell You Remember' },
+    { id:'halflight', n:'Half-Light', c:'static', col:'#5B4B6B', src:'yours', thought:'The Long Night Argument' }
+  ];
+  fieldDefs = [
+    { k:'wants', label:'Wants', hint:'one thing', ph:'The single thing it is always pushing for.' },
+    { k:'wrong', label:'Wrong about', hint:'reliably', ph:'The direction it is always mistaken in, and cannot see.' },
+    { k:'never', label:'Never', hint:'be fussy', ph:'Words, moves, registers that are out of character.' },
+    { k:'diction', label:'Diction', hint:'how it talks', ph:'Sentence length, vocabulary, whether it addresses you.' },
+    { k:'fights', label:'Fights', hint:'two names', ph:'One voice it interrupts. One it defers to.' }
+  ];
+  lineDefs = [
+    { k:'agree', label:'On agree', ph:'What it says when you agree with the statement.' },
+    { k:'disagree', label:'On disagree', ph:'What it says when you disagree.' },
+    { k:'either', label:'Either way', ph:'The sardonic one that fires whichever way you answered.' }
+  ];
+
+  prefill = {
+    actuary: {
+      wants:'Quantifiability, everything to be financialized and gamified',
+      wrong:'Its own capability of getting things wrong and capacity to do harm',
+      never:'Emotions, empathy, good or evil, social impact',
+      diction:'Speaks like a businessman, like your Hayeks and Friedmans, Chicago school boys and tech bros',
+      fights:'Solidarity, Historiography, moral ascriptions and attachments',
+      agree:'Excellent choice, Capitalism smiles upon you',
+      disagree:"You have too much faith, that's never worked everywhere in the world",
+      either:'The numbers never lie, the market never fails'
+    },
+    hunger: {
+      wants:'Self-interest, the world sacrifice themselves for them',
+      wrong:'That you can never be too ambitious, that sometimes people will make the right decision',
+      never:'Selfless, collective, communal',
+      diction:'Paranoid, entitled, insecure about itself so it takes it out on others',
+      fights:'Interrupts Committee. Defers to Half-Light. [defer picked by me]',
+      agree:"Take what's rightfully yours",
+      disagree:'They would never do the same for you',
+      either:"Remember, it's you against the world. Hell is others."
+    },
+    committee: {
+      wants:'Democracy but specifically "liberal democracy"',
+      wrong:'How easy it is to get through bureaucracy, moral law,',
+      never:'Acts without a vote, acts on intuition, breaking the Non Aggression Pact',
+      diction:'Very liberal, DSA non-offensive types',
+      fights:'Interrupts Half-Light. Defers to Room Read. [defer picked by me]',
+      agree:'The people have made their decision folks!',
+      disagree:'Authoritarian! We condemn!',
+      either:'Democracy dies in darkness'
+    },
+    halflight: {
+      wants:'Isolationism, a Hobbesian Leviathan to prevent all out chaos',
+      wrong:'The open-endedness of the state of nature,',
+      never:'Democratic, liberal',
+      diction:'Absolute, draconian, overly confident in its own leadership',
+      fights:'Interrupts Room Read. Defers to Nostalgia. [defer picked by me]',
+      agree:'Might makes right',
+      disagree:'Your weakness is appalling',
+      either:'With great power comes great respect. Show them the way'
+    },
+    histor: {
+      wants:'You to know it has seen this exact proposal fail before, with names and dates.',
+      wrong:'Assumes precedent is prediction. Cannot imagine a thing happening for the first time.',
+      never:'Speculates. Says "unprecedented." Admits it has not read something.',
+      diction:'Long clauses, passive constructions, dates. Talks past you, not to you.',
+      fights:'Interrupts Adrenal. Defers to nobody, which is the problem.',
+      agree:'', disagree:'', either:''
+    },
+    badfaith: {
+      wants:'The motive under the argument. Yours first, always.',
+      wrong:'Thinks finding a motive settles the question. Exempts itself from the same reading.',
+      never:'Takes a position. Compliments you without a second clause.',
+      diction:'Observations, not claims. Starts with "notice." Ends mid-thought.',
+      fights:'Interrupts whoever just sounded certain. Defers to Fatigue.',
+      agree:'', disagree:'', either:''
+    },
+    adrenal: {
+      wants:'It settled now, with the body, before the talking resumes.',
+      wrong:'Confuses urgency with importance. Has never once been asked to clean up after.',
+      never:'Uses a subordinate clause. Waits. Concedes a point.',
+      diction:'Two to five words. Imperatives. No question marks.',
+      fights:'Interrupts Committee, every time. Defers to Hunger.',
+      agree:'', disagree:'', either:''
+    },
+    fatigue: {
+      wants:'To be asked who is carrying the thing you just endorsed.',
+      wrong:'Treats its own exhaustion as evidence. Mistakes being tired for being right.',
+      never:'Volunteers. Uses an exclamation. Says "we should."',
+      diction:'Flat, slow, specific about hours and years. Second person, wearily.',
+      fights:'Interrupts Solidarity, gently. Defers to Hunger.',
+      agree:'', disagree:'', either:''
+    },
+    roomread: {
+      wants:'To know how this lands before you finish saying it.',
+      wrong:'Believes the room is the world. Cannot tell being liked from being right.',
+      never:'States a belief of its own. Speaks first.',
+      diction:'Hedged, present tense, weather-report calm. "That plays badly." "Nobody here will say it."',
+      fights:'Interrupts Adrenal. Defers to Committee.',
+      agree:'', disagree:'', either:''
+    },
+    solidarity: {
+      wants:'The first person plural to be true, and will use it until it is.',
+      wrong:'Who is inside the "we." Never checks, and gets furious when asked.',
+      never:'Says "I." Concedes a point to Actuary. Speaks about a person, only about people.',
+      diction:'Plural, past tense, slightly liturgical. "We were offered a price."',
+      fights:'Interrupts Actuary. Defers to Historiography.',
+      agree:'', disagree:'', either:''
+    },
+    supersti: {
+      wants:'The pattern to mean something, because a meaningless pattern is worse.',
+      wrong:'Everything, in a way that keeps turning out useful. Cannot distinguish signal from rhyme.',
+      never:'Cites a source. Says "coincidence." Finishes an explanation.',
+      diction:'Images instead of arguments. Weather, animals, roads. Present tense, no hedging.',
+      fights:'Interrupts Actuary, incoherently. Defers to Nostalgia.',
+      agree:'', disagree:'', either:''
+    },
+    nostalgia: {
+      wants:'Back. Not to a policy — to a specific afternoon.',
+      wrong:'Who that afternoon was good for. Remembers the bell, not who rang it.',
+      never:'Argues. Uses a statistic. Says "instead."',
+      diction:'Warm, concrete, small. Objects and sounds. Short sentences that trail off.',
+      fights:'Interrupts nobody — it just gets the last word. Defers to Half-Light.',
+      agree:'', disagree:'', either:''
+    }
+  };
+
+  state = { data: null, showExport: false, exportText: '', copied: false };
+
+  blank() {
+    const out = {};
+    this.voices.forEach(v => { out[v.id] = Object.assign({}, this.prefill[v.id]); });
+    return out;
+  }
+
+  componentDidMount() {
+    let saved = null;
+    try { saved = JSON.parse(window.localStorage.getItem(this.KEY) || 'null'); } catch (e) { saved = null; }
+    const base = this.blank();
+    if (saved) this.voices.forEach(v => { if (saved[v.id]) base[v.id] = Object.assign(base[v.id], saved[v.id]); });
+    this.setState({ data: base });
+  }
+
+  persist(data) { try { window.localStorage.setItem(this.KEY, JSON.stringify(data)); } catch (e) {} }
+  edit(id, key, val) {
+    const data = Object.assign({}, this.state.data);
+    data[id] = Object.assign({}, data[id], { [key]: val });
+    this.persist(data);
+    this.setState({ data, copied: false });
+  }
+  changed(v) {
+    const d = (this.state.data || {})[v.id] || {}, p = this.prefill[v.id] || {};
+    return this.fieldDefs.concat(this.lineDefs).some(f => (d[f.k] || '') !== (p[f.k] || ''));
+  }
+
+  buildText(only) {
+    const data = this.state.data || {};
+    return this.voices.filter(v => !only || v.src === only).map(v => {
+      const d = data[v.id] || {};
+      const cl = this.clusters.find(c => c.id === v.c);
+      const L = [v.n.toUpperCase() + ' — ' + cl.name + (v.src === 'yours' ? '' : this.changed(v) ? ' [edited]' : ' [draft, unedited]')];
+      this.fieldDefs.forEach(f => { L.push(f.label + ': ' + (d[f.k] || '—')); });
+      L.push('');
+      L.push('Sample lines — ' + v.n);
+      this.lineDefs.forEach(f => { L.push('  ' + f.label + ': ' + (d[f.k] || '—')); });
+      return L.join('\n');
+    }).join('\n\n' + '\u2014'.repeat(40) + '\n\n');
+  }
+
+  doExport(only) {
+    const text = this.buildText(only);
+    this.setState({ showExport: true, exportText: text, copied: false });
+    let p = null;
+    try { if (window.navigator.clipboard) p = window.navigator.clipboard.writeText(text); } catch (e) { p = null; }
+    if (p && p.then) p.then(() => this.setState({ copied: true })).catch(() => this.setState({ copied: false }));
+  }
+  doReset() {
+    const data = this.blank();
+    this.persist(data);
+    this.setState({ data, showExport: false, copied: false });
+  }
+
+  renderVals() {
+    const data = this.state.data || {};
+    const drafts = this.voices.filter(v => v.src === 'draft');
+    const edited = drafts.filter(v => this.changed(v)).length;
+    const lineCount = v => this.lineDefs.filter(f => ((data[v.id] || {})[f.k] || '').trim()).length;
+
+    return {
+      yoursCount: this.voices.filter(v => v.src === 'yours').length,
+      draftCount: drafts.length - edited,
+      groups: this.clusters.map(c => ({
+        name: c.name, color: c.color, note: c.note,
+        voices: this.voices.filter(v => v.c === c.id).map(v => {
+          const mine = v.src === 'yours', touched = this.changed(v);
+          const n = lineCount(v);
+          return {
+            name: v.n, color: v.col, thought: 'Thought: ' + v.thought,
+            badge: mine ? 'yours' : touched ? 'edited' : 'my draft',
+            badgeBg: mine ? '#2B2620' : touched ? '#2F5570' : 'transparent',
+            badgeFg: mine ? '#F3EEE1' : touched ? '#F3EEE1' : '#6B6255',
+            border: mine || touched ? '#DAD0BC' : '#96352A',
+            lineNote: n === 3 ? 'all three written' : n === 0 ? 'none yet — these matter most' : n + ' of 3',
+            fields: this.fieldDefs.map(f => ({
+              label: f.label, hint: f.hint, ph: f.ph, val: (data[v.id] || {})[f.k] || '',
+              onChange: e => this.edit(v.id, f.k, e.target.value)
+            })),
+            lines: this.lineDefs.map(f => ({
+              label: f.label, ph: f.ph, val: (data[v.id] || {})[f.k] || '',
+              onChange: e => this.edit(v.id, f.k, e.target.value)
+            }))
+          };
+        })
+      })),
+      progressNote: edited === 0
+        ? 'None of the eight drafts touched yet. Export anyway if you want the whole sheet in one place — the drafts are marked as drafts.'
+        : edited >= drafts.length
+          ? 'All eight drafts edited. Paste it back to me and I will write their rows into the grid.'
+          : edited + ' of ' + drafts.length + ' drafts edited. Partial is genuinely fine — send me what you have and I will write those rows first.',
+      exportLabel: this.state.copied ? 'Copied to clipboard ✓' : 'Export all twelve',
+      doExport: () => this.doExport(null),
+      doDrafts: () => this.doExport('draft'),
+      doReset: () => this.doReset(),
+      showExport: this.state.showExport,
+      exportText: this.state.exportText
+    };
+  }
+}
+</script>
+</body>
+</html>

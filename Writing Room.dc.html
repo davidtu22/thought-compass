@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#F3EEE1;background-image:repeating-linear-gradient(to bottom,transparent,transparent 37px,rgba(43,38,32,.055) 37px,rgba(43,38,32,.055) 38px);font-family:"Source Serif 4",Georgia,serif;color:#2B2620}
+a{color:#2F5570;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#96352A}
+textarea,input{font-family:"Source Serif 4",Georgia,serif}
+textarea::placeholder{color:#6B6255;font-style:italic}
+textarea:focus{outline:none;border-color:#96352A}
+@media print{.noprint{display:none}}
+</style></helmet>
+
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 80px">
+
+<div style="padding:56px 0 30px;border-bottom:1px solid #DAD0BC">
+<div style="font:600 .76rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6B6255;margin-bottom:16px">Workshop · Thought Compass · the long haul</div>
+<h1 style="margin:0 0 14px;font:500 clamp(2.1rem,4.5vw,3rem)/1.05 Newsreader,Georgia,serif">The writing room</h1>
+<p style="margin:0;max-width:58ch;font:400 1.2rem/1.45 Newsreader,Georgia,serif;font-style:italic;color:#6B6255;text-wrap:pretty">Twenty-four voices, a register to practise, and a drill that hands you the pen. I draft. You decide what stays.</p>
+<div style="display:flex;flex-wrap:wrap;gap:24px;margin:26px 0 0;padding-top:18px;border-top:1px dashed #DAD0BC;font:400 .8rem/1.8 'IBM Plex Mono',monospace;color:#6B6255">
+<span><b style="font-weight:600">{{ approvedCount }}</b> voices approved</span>
+<span><b style="font-weight:600">{{ pendingCount }}</b> awaiting your call</span>
+<span><b style="font-weight:600">{{ drillWritten }}</b> lines in your hand</span>
+<span>Saves as you type</span>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:30px 46px;padding:36px 0;border-bottom:1px solid #DAD0BC;align-items:flex-start">
+<div style="flex:1 1 430px;min-width:0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">I.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">The register</h2></div>
+<p style="margin:0 0 1em;max-width:64ch;font:400 1.06rem/1.6 'Source Serif 4',serif">An infinite collection of good tweets is the right description and a useful constraint. What makes those lines work is not that they are short. It is that each one is a complete small argument with a turn in it, delivered by someone who does not know they are being characterised.</p>
+<p style="margin:0 0 22px;max-width:64ch;font:400 1.06rem/1.6 'Source Serif 4',serif">Six things I would hold yourself to. These are observations about the target, not rules I want you to obey — argue with any of them.</p>
+
+<div style="display:flex;flex-direction:column;gap:16px;max-width:64ch">
+<sc-for list="{{ craft }}" as="c" hint-placeholder-count="6">
+<div style="display:flex;gap:14px;align-items:flex-start">
+<span style="flex:none;width:22px;padding-top:2px;font:600 .78rem 'IBM Plex Mono',monospace;color:#96352A">{{ c.n }}</span>
+<div style="min-width:0">
+<div style="font:600 .76rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#2B2620;margin-bottom:4px">{{ c.title }}</div>
+<p style="margin:0 0 6px;font:400 1rem/1.55 'Source Serif 4',serif;color:#2B2620">{{ c.body }}</p>
+<p style="margin:0;font:400 .86rem/1.5 'IBM Plex Mono',monospace;color:#96352A">{{ c.example }}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<aside style="flex:0 1 290px;min-width:250px;padding-top:6px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:18px 20px">
+<div style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#2F5570;margin-bottom:10px">Fig. 1 — the actual scale</div>
+<div style="display:flex;flex-direction:column;gap:9px;font:400 .82rem/1.5 'IBM Plex Mono',monospace;color:#6B6255">
+<div style="display:flex;justify-content:space-between;gap:10px"><span>Disco Elysium</span><span style="color:#2B2620">~1,000,000 w</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px"><span>Zero Parades</span><span style="color:#2B2620">~1,000,000 w</span></div>
+<div style="display:flex;justify-content:space-between;gap:10px;border-top:1px solid #DAD0BC;padding-top:9px"><span>This bank now</span><span style="color:#96352A">{{ wordCount }} w</span></div>
+</div>
+<p style="margin:12px 0 0;font:400 .78rem/1.5 'Source Serif 4',serif;color:#6B6255">Those teams were dozens of writers over years. The number is not a target, it is a reminder that the unit of work is the single line, written well, many times.</p>
+</div>
+<div style="border-left:2px solid #96352A;padding-left:14px">
+<div style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:5px">length —</div>
+<p style="margin:0;font:400 .82rem/1.6 'IBM Plex Mono',monospace;color:#A9483C">Your current lines average {{ avgLen }} words. The target register sits nearer 25–45: long enough for a turn, short enough to read as one thought. The drill counts for you.</p>
+</div>
+</aside>
+</div>
+
+<div style="padding:36px 0 0;border-bottom:1px solid #DAD0BC">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">II.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Twelve more voices, proposed</h2></div>
+<p style="margin:0 0 8px;max-width:66ch;font:400 1.06rem/1.6 'Source Serif 4',serif">Taking the roster to twenty-four, three per cluster. I picked for gaps in the current twelve rather than for variety: there is nothing tender in the roster, nothing ecstatic, nothing ashamed, nothing funny, and nothing that doubts its own instrument. Each is a proposal with a name, a premise, and one sample line in its register.</p>
+<p style="margin:0 0 26px;max-width:66ch;font:400 .92rem/1.6 'IBM Plex Mono',monospace;color:#6B6255">Keep, cut, or rename. Anything you keep, you can rewrite in place — the premise field is the one that decides what it says everywhere else.</p>
+
+<sc-for list="{{ newClusters }}" as="g" hint-placeholder-count="4">
+<div style="margin-bottom:26px">
+<div style="display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #DAD0BC;padding-bottom:9px;margin-bottom:16px">
+<span style="font:600 .8rem 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:{{ g.color }}">{{ g.name }}</span>
+<span style="font:400 .72rem 'IBM Plex Mono',monospace;color:#6B6255">{{ g.note }}</span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px">
+<sc-for list="{{ g.voices }}" as="v" hint-placeholder-count="3">
+<div style="background:#EAE2CF;border:1px solid {{ v.border }};border-radius:4px;padding:18px 20px 20px;box-shadow:0 1px 2px rgba(43,38,32,.12);opacity:{{ v.op }}">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:3px">
+<input value="{{ v.name }}" onChange="{{ v.onName }}" style="flex:1;min-width:0;border:none;border-bottom:1px solid #DAD0BC;background:none;padding:2px 0;font:500 1.18rem Newsreader,Georgia,serif;color:{{ v.color }};outline:none">
+<span style="flex:none;font:600 .6rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;padding:3px 7px;border-radius:3px;background:{{ v.badgeBg }};color:{{ v.badgeFg }}">{{ v.badge }}</span>
+</div>
+<div style="font:400 .66rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6B6255;margin-bottom:13px">fills: {{ v.gap }}</div>
+
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:5px">Premise</div>
+<textarea rows="3" value="{{ v.premise }}" onChange="{{ v.onPremise }}" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#F3EEE1;color:#2B2620;border-radius:3px;padding:9px 10px;font:400 .9rem/1.5 'Source Serif 4',serif;resize:vertical;margin-bottom:12px"></textarea>
+
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:5px">Sample line</div>
+<textarea rows="3" value="{{ v.sample }}" onChange="{{ v.onSample }}" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#F3EEE1;color:{{ v.color }};border-radius:3px;padding:9px 10px;font:400 .86rem/1.5 'IBM Plex Mono',monospace;resize:vertical"></textarea>
+
+<div style="display:flex;gap:7px;margin-top:13px">
+<button onClick="{{ v.keep }}" style="flex:1;min-height:38px;border-radius:3px;cursor:pointer;border:1px solid {{ v.keepBorder }};background:{{ v.keepBg }};color:{{ v.keepFg }};font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase">Keep</button>
+<button onClick="{{ v.cut }}" style="flex:1;min-height:38px;border-radius:3px;cursor:pointer;border:1px solid {{ v.cutBorder }};background:{{ v.cutBg }};color:{{ v.cutFg }};font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase">Cut</button>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:36px 0 0;border-bottom:1px solid #DAD0BC">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">III.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">The drill</h2></div>
+<p style="margin:0 0 24px;max-width:66ch;font:400 1.06rem/1.6 'Source Serif 4',serif">A statement, a voice, and its constraints. My draft is folded away until you ask for it — write yours first, then look, then decide which one goes in. This is the part that scales to a hundred thousand words, and the only part I cannot do for you.</p>
+
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:5px;padding:24px 26px 26px;box-shadow:0 1px 3px rgba(43,38,32,.14)">
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DAD0BC;padding-bottom:14px;margin-bottom:18px">
+<span style="font:600 .72rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#6B6255">Prompt {{ drillNum }}</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button onClick="{{ prevDrill }}" style="min-height:36px;padding:0 14px;border:1px solid #DAD0BC;background:none;color:#6B6255;border-radius:3px;font:500 .74rem 'IBM Plex Mono',monospace;cursor:pointer">← Back</button>
+<button onClick="{{ nextDrill }}" style="min-height:36px;padding:0 14px;border:1px solid #2B2620;background:#2B2620;color:#F3EEE1;border-radius:3px;font:500 .74rem 'IBM Plex Mono',monospace;cursor:pointer">Next prompt →</button>
+<button onClick="{{ shuffleDrill }}" style="min-height:36px;padding:0 14px;border:1px solid #DAD0BC;background:none;color:#6B6255;border-radius:3px;font:500 .74rem 'IBM Plex Mono',monospace;cursor:pointer">Shuffle</button>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:26px 34px;align-items:flex-start">
+<div style="flex:1 1 380px;min-width:0">
+<div style="font:500 .7rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#6B6255;margin-bottom:8px">The statement</div>
+<p style="margin:0 0 6px;font:400 1.38rem/1.3 Newsreader,Georgia,serif;text-wrap:pretty">“{{ drillStatement }}”</p>
+<div style="font:400 .72rem 'IBM Plex Mono',monospace;color:#6B6255;margin-bottom:20px">{{ drillMeta }}</div>
+
+<div style="font:500 .7rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#6B6255;margin-bottom:8px">Speaking</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:5px">
+<span style="font:500 1.2rem Newsreader,Georgia,serif;color:{{ drillColor }}">{{ drillVoice }}</span>
+<span style="font:400 .7rem 'IBM Plex Mono',monospace;color:#6B6255">{{ drillDirection }}</span>
+</div>
+<p style="margin:0 0 18px;font:400 .9rem/1.5 'IBM Plex Mono',monospace;color:{{ drillColor }};max-width:48ch">{{ drillPremise }}</p>
+
+<div style="border-top:1px dashed #DAD0BC;padding-top:16px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px">
+<span style="font:600 .7rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#96352A">Your line</span>
+<span style="font:400 .7rem 'IBM Plex Mono',monospace;color:{{ lenColor }}">{{ lenNote }}</span>
+</div>
+<textarea rows="4" value="{{ drillText }}" onChange="{{ onDrillText }}" placeholder="What does this voice say, given that answer?" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#F3EEE1;color:#2B2620;border-radius:3px;padding:12px 13px;font:400 1rem/1.55 'IBM Plex Mono',monospace;resize:vertical"></textarea>
+</div>
+</div>
+
+<div style="flex:0 1 290px;min-width:250px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#F3EEE1;border:1px solid #DAD0BC;border-radius:4px;padding:16px 18px">
+<div style="font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#6B6255;margin-bottom:11px">Its constraints</div>
+<div style="display:flex;flex-direction:column;gap:9px;font:400 .82rem/1.5 'Source Serif 4',serif;color:#2B2620">
+<div><b style="font:600 .62rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6B6255;display:block">Never</b>{{ drillNever }}</div>
+<div><b style="font:600 .62rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6B6255;display:block">Wrong about</b>{{ drillWrong }}</div>
+<div><b style="font:600 .62rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#6B6255;display:block">Diction</b>{{ drillDiction }}</div>
+</div>
+</div>
+
+<sc-if value="{{ showDraft }}" hint-placeholder-val="{{ false }}">
+<div style="background:#F3EEE1;border:1px dashed #96352A;border-radius:4px;padding:16px 18px">
+<div style="font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#96352A;margin-bottom:9px">My draft — {{ draftLen }} words</div>
+<p style="margin:0 0 10px;font:400 .9rem/1.55 'IBM Plex Mono',monospace;color:#96352A">{{ drillDraft }}</p>
+<p style="margin:0;font:400 .78rem/1.5 'Source Serif 4',serif;color:#6B6255">{{ draftNote }}</p>
+</div>
+</sc-if>
+<sc-if value="{{ hideDraft }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ revealDraft }}" style="min-height:44px;width:100%;border:1px dashed #DAD0BC;background:none;color:#6B6255;border-radius:4px;font:500 .78rem 'IBM Plex Mono',monospace;cursor:pointer">Show my draft</button>
+</sc-if>
+
+<div style="border-left:2px solid #2F5570;padding-left:13px">
+<div style="font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#2F5570;margin-bottom:5px">note —</div>
+<p style="margin:0;font:400 .8rem/1.55 'IBM Plex Mono',monospace;color:#2F5570">{{ drillNote }}</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="margin:22px 0 34px">
+<div style="font:600 .7rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#6B6255;margin-bottom:12px">Written so far — {{ drillWritten }} of {{ drillTotal }}</div>
+<div style="display:flex;flex-wrap:wrap;gap:5px">
+<sc-for list="{{ drillDots }}" as="d" hint-placeholder-count="18">
+<button onClick="{{ d.go }}" title="{{ d.title }}" style="width:26px;height:26px;border-radius:3px;cursor:pointer;padding:0;font:500 .56rem 'IBM Plex Mono',monospace;border:1px solid {{ d.border }};background:{{ d.bg }};color:{{ d.fg }}">{{ d.n }}</button>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div class="noprint" style="padding:32px 0 0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">IV.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Send it back</h2></div>
+<p style="margin:0 0 18px;max-width:64ch;font:400 1rem/1.55 'Source Serif 4',serif;color:#6B6255">{{ exportNote }}</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+<button onClick="{{ doExport }}" style="min-height:46px;padding:0 20px;border:1px solid #2B2620;background:#2B2620;color:#F3EEE1;border-radius:4px;font:500 .86rem 'IBM Plex Mono',monospace;cursor:pointer">{{ exportLabel }}</button>
+<button onClick="{{ doReset }}" style="min-height:46px;padding:0 20px;border:1px solid #DAD0BC;background:none;color:#6B6255;border-radius:4px;font:500 .86rem 'IBM Plex Mono',monospace;cursor:pointer">Restore proposals</button>
+</div>
+<sc-if value="{{ showExport }}" hint-placeholder-val="{{ false }}">
+<textarea readOnly="{{ true }}" value="{{ exportText }}" rows="18" style="width:100%;box-sizing:border-box;border:1px solid #DAD0BC;background:#EAE2CF;color:#2B2620;border-radius:4px;padding:14px;font:400 .8rem/1.6 'IBM Plex Mono',monospace;resize:vertical"></textarea>
+</sc-if>
+</div>
+
+<div style="padding:30px 0 0;margin-top:30px;border-top:1px solid #DAD0BC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:400 .72rem 'IBM Plex Mono',monospace;color:#6B6255">
+<span>D. Tu, 2026. With <a href="Voice Bible.dc.html">the voice bible</a> and <a href="Thought Table.dc.html">the Thought table</a>.</span>
+<span>The unit of work is one line.</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1000}}">
+class Component extends DCLogic {
+  KEY = 'tc-writing-room-v1';
+
+  craft = [
+    { n:'1', title:'A turn inside two sentences',
+      body:'The line sets something up and then undercuts it before it ends. Not a joke exactly — a second thought arriving faster than the first one finished.',
+      example:'“It is the only instrument that bills you for lying to it.”' },
+    { n:'2', title:'The voice does not know it is being characterised',
+      body:'Nothing may be self-aware about its own flaw. The moment a voice says something knowing about itself it stops being a voice and becomes the author.',
+      example:'Actuary never says “I suppose I price everything.” It just prices the thing.' },
+    { n:'3', title:'Concrete nouns beat abstractions, every time',
+      body:'A casserole, a bell, a saw, rent due Friday. The abstraction is what the reader concludes; the noun is what you give them.',
+      example:'“Tell that to the man with the saw and the rent due Friday.”' },
+    { n:'4', title:'Second person, uninvited',
+      body:'These are interior voices, so they have the right to be rude in a way a narrator does not. They address you, interrupt you, and do not wait to be asked.',
+      example:'“You answered that one quickly.”' },
+    { n:'5', title:'Never explain the consequence',
+      body:'End on the noun or the turn. The temptation is one more clause spelling out what it means. That clause is always the weakest one in the line.',
+      example:'“Might makes right.” Nothing after it.' },
+    { n:'6', title:'Wrong, but not stupid',
+      body:'Every voice should be able to win an argument with the reader occasionally. If it can never be right, it is a punching bag and the reader stops listening.',
+      example:'Half-Light is correct about roughly one night in ten.' }
+  ];
+
+  proposals = [
+    { id:'casuistry', c:'ledger', name:'Casuistry', color:'#2F5570',
+      gap:'moral reasoning as a craft skill',
+      premise:'Splits the hair. Finds the distinction that makes the rule survive contact with the case. Genuinely useful, and cannot tell the difference between a distinction and an excuse.',
+      sample:'There is a version of that which is defensible. It requires four qualifications and none of them are the reason you said it.',
+      never:'Says obviously. Reaches a conclusion in one step.',
+      wrong:'Believes any position can be made coherent, and that coherent is the same as right.',
+      diction:'Conditionals, subclauses, the word "unless" doing structural work.' },
+    { id:'falsify', c:'ledger', name:'Falsification', color:'#4A7A8C',
+      gap:'doubt about the instrument itself',
+      premise:'Asks what would have to be true for you to be wrong, and notices when the answer is nothing. Points the same question at the test you are currently taking.',
+      sample:'Name the result that would change your mind. If you cannot, this is not a position, it is a weather pattern with opinions.',
+      never:'Asserts anything. Offers a view of its own.',
+      wrong:'Treats unfalsifiable and worthless as synonyms, which quietly excludes most of what people live by.',
+      diction:'Questions, mostly. Short. Never rhetorical — it actually wants the answer.' },
+    { id:'inventory', c:'ledger', name:'Inventory', color:'#5A7A5A',
+      gap:'competence, the thing that actually works',
+      premise:'Counts what is in the room before anyone theorises about it. Has fixed things. Is quietly contemptuous of every position that has never had to hold a tool.',
+      sample:'Four of those exist. Two of them work. Nobody in this conversation has touched either. Continue.',
+      never:'Generalises. Uses the word "system."',
+      wrong:'Thinks the thing that works is the thing that is right, and cannot see the scale at which that fails.',
+      diction:'Counts. Flat declaratives with numbers in them. Ends abruptly.' },
+    { id:'appetite', c:'marrow', name:'Appetite', color:'#B05A3A',
+      gap:'pleasure, not scarcity — the roster has no joy in it',
+      premise:'Wants the good thing, now, and does not experience this as a failing. Where Hunger remembers going without, Appetite has never once apologised for wanting.',
+      sample:'Yes, and it was worth it, and you would do it again. Put that in the record next to the other thing.',
+      never:'Feels guilty. Justifies. Defers to a later, better moment.',
+      wrong:'Cannot distinguish wanting something from being owed it, and never notices who paid.',
+      diction:'Warm, present tense, sensory. Short and unhurried, which is a hard combination.' },
+    { id:'flinch', c:'marrow', name:'Flinch', color:'#8C4A5A',
+      gap:'shame, felt in the body before it is thought',
+      premise:'The reaction that arrives before the reasoning and is usually about you rather than the question. Conscience with no vocabulary, only a temperature.',
+      sample:'Something in that was about you. Not the argument, the other part. You felt it land before you finished reading.',
+      never:'Argues a position. Uses the word "moral."',
+      wrong:'Mistakes discomfort for wrongdoing, so it convicts the wrong person about half the time. Usually you.',
+      diction:'Fragments. Physical words — chest, back of the neck, heat. Trails off mid-thought.' },
+    { id:'lastditch', c:'marrow', name:'Last Ditch', color:'#6E4A6E',
+      gap:'the death drive — the part that wants it over',
+      premise:'Wants the thing settled at any cost, including yours. Not despair exactly; the specific relief of a decision that cannot be revisited.',
+      sample:'Or you could simply lose. It would be over, and quiet, and you would not have to hold any of this again.',
+      never:'Panics. Raises its voice. Offers a plan.',
+      wrong:'Sells the peace and never mentions the price, because from where it stands the price is the peace.',
+      diction:'Calm, spacious, almost kind. The calmest voice in the roster, which is what makes it frightening.' },
+    { id:'bedside', c:'choir', name:'Bedside', color:'#4A7A6A',
+      gap:'care — there is nothing tender in the roster',
+      premise:'Asks who is going to be with the person this lands on. Not policy, not justice: the actual afternoon of the actual person afterwards.',
+      sample:'Someone is going to sit with them while that happens. You have not said who. That is usually the whole of it.',
+      never:'Scales up. Says "people" when it means a person. Wins an argument.',
+      wrong:'Cannot think above the scale of one room, so it will trade a hundred strangers for one visible face.',
+      diction:'Quiet, specific, second person. Asks rather than states.' },
+    { id:'grievance', c:'choir', name:'Grievance', color:'#A03A2A',
+      gap:'rage at a specific injustice, not the general one',
+      premise:'Remembers exactly who did it and has not agreed to stop being angry. Where Solidarity speaks for everyone, Grievance is furious on behalf of one.',
+      sample:'Do not make this general. It was done, by someone, on a Tuesday, and they are still comfortable.',
+      never:'Forgives. Abstracts. Says "we."',
+      wrong:'Believes the anger is load-bearing, and will not test whether anything would collapse without it.',
+      diction:'Hard, particular, past tense. Names days and rooms. Will not be moved along.' },
+    { id:'pulpit', c:'choir', name:'Pulpit', color:'#7A6A2A',
+      gap:'rhetoric — the pleasure of the well-made case',
+      premise:'Knows how to say it so the room moves. Cares about the cadence more than the content and has never quite admitted that to itself.',
+      sample:'Say it the other way and they will carry you out on their shoulders. Say it your way and you will be right, alone, in a cold hall.',
+      never:'Concedes mid-sentence. Speaks plainly when ornament is available.',
+      wrong:'Thinks a thing said beautifully has been argued. Has convinced itself of several things purely on rhythm.',
+      diction:'Triads, repetition, a build. Longer than everything else in the roster, deliberately.' },
+    { id:'rapture', c:'static', name:'Rapture', color:'#6A4AA0',
+      gap:'the utopian surge — nothing in the roster hopes',
+      premise:'Sees, for a second, the world where this went right, and cannot be talked out of having seen it. Arrives uninvited and leaves nothing behind but the memory of having believed it.',
+      sample:'For one moment you saw the whole of it working, every part, and the fact that it cannot does not unmake that you saw it.',
+      never:'Plans. Costs anything. Survives contact with the next question.',
+      wrong:'Confuses the vividness of the vision with evidence for it, and offers no route from here to there.',
+      diction:'Present tense, mounting, no hedging. One long sentence that does not stop where you expect.' },
+    { id:'thebit', c:'static', name:'The Bit', color:'#3A6A8C',
+      gap:'humour as a defence mechanism',
+      premise:'Reaches for the joke at the exact moment the question gets close. Frequently the smartest thing in the room, and always slightly early.',
+      sample:'Great question. Love that for us. Anyway, here is a completely unrelated thought I have decided to have instead.',
+      never:'Sits with anything. Delivers a second, worse joke to explain the first.',
+      wrong:'Believes the joke is a position. It is a door, and it only opens outward.',
+      diction:'Contemporary, clipped, register-shifting. The only voice allowed to sound like this decade.' },
+    { id:'vertigo', c:'static', name:'Vertigo', color:'#4A4A6E',
+      gap:'scale — the cosmic shrug',
+      premise:'Zooms out until the question stops mattering, which is either a comfort or an abdication and it will not say which.',
+      sample:'In four hundred years this is a paragraph, if that. You are going to answer it anyway, and that is either the joke or the point.',
+      never:'Recommends anything. Uses a proper noun.',
+      wrong:'Treats insignificance as an argument, which would also excuse everything ever done to anyone.',
+      diction:'Long horizons, geological nouns, flat affect. Says "anyway" a lot.' }
+  ];
+
+  clusterMeta = {
+    ledger:{ name:'Ledger', color:'#2F5570', note:'the ones that reason' },
+    marrow:{ name:'Marrow', color:'#96352A', note:'the ones in the body' },
+    choir:{ name:'Choir', color:'#5A6B3A', note:'the ones that need a room' },
+    static:{ name:'Static', color:'#5B4B6B', note:'the ones that come in unbidden' }
+  };
+
+  drills = [
+    { st:'A landlord who has never seen the building should still collect rent on it.', ax:'Economy', v:'grievance', dir:'you agreed',
+      draft:'Do not make this general. There is a name on that deed and they sleep fine, and I would like the record to show that I know it.',
+      note:'The hard one to start on: Grievance has to be angry about a specific person while the statement is abstract. Find the person.' },
+    { st:'Work is how a person earns the right to exist.', ax:'Economy', v:'flinch', dir:'you agreed',
+      draft:'Something in that was about you. Not the argument. The other part, the one that arrived before you had finished reading it.',
+      note:'Flinch has no vocabulary for morality. If your line explains why it flinched, it is Bad Faith instead.' },
+    { st:'There are truths a population is better off not being told.', ax:'Speech', v:'pulpit', dir:'you disagreed',
+      draft:'Say it plainly and they will nod. Say it plainly twice and they will remember. Say it plainly for thirty years and they will not permit the other thing.',
+      note:'Pulpit should be the longest line in any stack it appears in. Let the cadence carry past where you would normally stop.' },
+    { st:'Some laws deserve to be broken openly, and loudly.', ax:'Authority', v:'thebit', dir:'you agreed',
+      draft:'Openly and loudly, absolutely, yes. Committing to that. Anyway — what were the other four answers, out of curiosity.',
+      note:'The Bit has to be funny and also visibly running away. If it is only funny, cut it.' },
+    { st:'A tradition that no longer serves anyone is still worth keeping.', ax:'Culture', v:'vertigo', dir:'either way',
+      draft:'Everyone who invented that is dead and everyone defending it will be. Anyway, it will probably outlast the argument, which is the only thing traditions are good at.',
+      note:'Vertigo is allowed to be funny but never warm. The shrug has to cost something.' },
+    { st:'A cost that lands on people not yet born is not really a cost.', ax:'Ecology', v:'bedside', dir:'you agreed',
+      draft:'Somebody will sit with them while that happens. Not you, and not me, and we have both just agreed to that quite quickly.',
+      note:'Bedside must stay at the scale of one room. The moment it says "future generations" it has become Committee.' },
+    { st:'The market is the most honest instrument we have for finding out what people want.', ax:'Economy', v:'falsify', dir:'you agreed',
+      draft:'What would the market have to do for you to call it dishonest? If nothing occurs to you, you have not described an instrument.',
+      note:'Falsification only asks. If your line contains an assertion, it has drifted into Actuary.' },
+    { st:'Reform is what people call a revolution they intend to survive.', ax:'Tempo', v:'lastditch', dir:'you agreed',
+      draft:'Or neither, and it ends, and the arguing stops. That is also available and nobody ever puts it on the list.',
+      note:'Last Ditch is the calmest voice in the roster. If your line sounds distressed, it is Half-Light.' },
+    { st:'A person who has more than they could ever spend is evidence the system works.', ax:'Economy', v:'casuistry', dir:'you disagreed',
+      draft:'It is evidence that something works. Whether the something is the system or the particular arrangement that person sits inside is the distinction you skipped.',
+      note:'Casuistry should make a genuinely good point and also be visibly enjoying itself too much.' },
+    { st:'A forest is worth more standing than the wage it would pay felled.', ax:'Ecology', v:'rapture', dir:'you agreed',
+      draft:'For a moment you saw all of it standing, every one of them, the whole country under a canopy, and the fact that it will not happen does not unmake that you saw it.',
+      note:'Rapture gets one long sentence and no second one. Do not let it plan anything.' },
+    { st:'Some of what police do would be cheaper handled by someone else.', ax:'Economy', v:'inventory', dir:'you agreed',
+      draft:'Six things get called in on a Tuesday night. Two need a badge. Nobody costing this out has been in the van.',
+      note:'Inventory counts. If there is no number in your line, it is not Inventory yet.' },
+    { st:'A job that exists only because we are wasteful should end, even if it is yours.', ax:'Ecology', v:'appetite', dir:'you disagreed',
+      draft:'Good. It paid for a decent coat and two years of Fridays, and I am not going to pretend those were nothing to be sorry about.',
+      note:'Appetite must not be defensive. It wants what it wants and has never once apologised.' },
+    { st:'Patience is what the comfortable call their own advantage.', ax:'Tempo', v:'grievance', dir:'you agreed',
+      draft:'They told us to wait in nineteen eighty-four and again in two thousand and eight and both times they were the ones who could afford to.',
+      note:'Give it a date. Grievance without a date is Solidarity with a temper.' },
+    { st:'Children should be told plainly how bad it is likely to get.', ax:'Ecology', v:'bedside', dir:'you disagreed',
+      draft:'Who is in the room afterwards. Name them. You are proposing to tell a nine-year-old something and then go to work.',
+      note:'Bedside asks rather than states. Two questions is usually one too many; find the single one.' },
+    { st:'A country at war has the right to lie to its own people.', ax:'Speech', v:'casuistry', dir:'you agreed',
+      draft:'A right, or a permission, or an excuse afterwards. Those are three different claims and you have just made whichever one is cheapest.',
+      note:'The triad is a Casuistry move. Use it, then make sure the third item does real work.' },
+    { st:'Things only change after something breaks.', ax:'Tempo', v:'vertigo', dir:'you agreed',
+      draft:'Everything breaks eventually, which makes that true and useless in the same sentence. Anyway, something is breaking right now and it is not this.',
+      note:'Vertigo should make the statement feel smaller without quite refuting it.' },
+    { st:'Money spent to be heard is a kind of speech.', ax:'Speech', v:'pulpit', dir:'you disagreed',
+      draft:'Speech is what a person does with a throat in a room. This is what a person does with a chequebook in an office, and calling them the same word is the most successful thing anyone has done with either.',
+      note:'Pulpit is allowed the longest line here. Build it in three and land on the last.' },
+    { st:'You are owed nothing you did not take.', ax:'Property', v:'flinch', dir:'you disagreed',
+      draft:'Wait. Back of the neck. You have taken things. Not that one, but something, and it came up just now for a reason.',
+      note:'Flinch convicts the wrong person about half the time. Let it be unfair here.' }
+  ];
+
+  state = { data:null, verdicts:null, lines:null, i:0, showDraft:false, showExport:false, exportText:'', copied:false };
+
+  base() {
+    const data = {}, verdicts = {};
+    this.proposals.forEach(p => {
+      data[p.id] = { name:p.name, premise:p.premise, sample:p.sample };
+      verdicts[p.id] = null;
+    });
+    return { data, verdicts };
+  }
+
+  componentDidMount() {
+    let saved = null;
+    try { saved = JSON.parse(window.localStorage.getItem(this.KEY) || 'null'); } catch (e) { saved = null; }
+    const b = this.base();
+    if (saved && saved.data) this.proposals.forEach(p => { if (saved.data[p.id]) b.data[p.id] = Object.assign(b.data[p.id], saved.data[p.id]); });
+    if (saved && saved.verdicts) Object.assign(b.verdicts, saved.verdicts);
+    this.setState({ data:b.data, verdicts:b.verdicts, lines:(saved && saved.lines) || {} });
+  }
+
+  persist(next) {
+    const payload = Object.assign({ data:this.state.data, verdicts:this.state.verdicts, lines:this.state.lines }, next || {});
+    try { window.localStorage.setItem(this.KEY, JSON.stringify(payload)); } catch (e) {}
+  }
+  editVoice(id, key, val) {
+    const data = Object.assign({}, this.state.data);
+    data[id] = Object.assign({}, data[id], { [key]: val });
+    this.persist({ data });
+    this.setState({ data, copied:false });
+  }
+  setVerdict(id, v) {
+    const verdicts = Object.assign({}, this.state.verdicts);
+    verdicts[id] = verdicts[id] === v ? null : v;
+    this.persist({ verdicts });
+    this.setState({ verdicts, copied:false });
+  }
+  setLine(i, val) {
+    const lines = Object.assign({}, this.state.lines); lines[i] = val;
+    this.persist({ lines });
+    this.setState({ lines, copied:false });
+  }
+  go(i) {
+    const n = this.drills.length;
+    this.setState({ i: ((i % n) + n) % n, showDraft:false });
+  }
+  words(s) { return (s || '').trim() ? (s || '').trim().split(/\s+/).length : 0; }
+  prop(id) { return this.proposals.find(p => p.id === id); }
+  vinfo(id) {
+    const p = this.prop(id);
+    const d = (this.state.data || {})[id] || {};
+    return {
+      name: d.name || (p ? p.name : id),
+      premise: d.premise || (p ? p.premise : ''),
+      color: p ? p.color : '#6B6255',
+      never: p ? p.never : '', wrong: p ? p.wrong : '', diction: p ? p.diction : ''
+    };
+  }
+
+  buildText() {
+    const data = this.state.data || {}, verdicts = this.state.verdicts || {}, lines = this.state.lines || {};
+    const kept = this.proposals.filter(p => verdicts[p.id] === 'keep');
+    const cut = this.proposals.filter(p => verdicts[p.id] === 'cut');
+    const undecided = this.proposals.filter(p => !verdicts[p.id]);
+    const L = [];
+    L.push('VOICE PROPOSALS — ' + kept.length + ' kept, ' + cut.length + ' cut, ' + undecided.length + ' undecided');
+    L.push('');
+    [['KEPT', kept], ['UNDECIDED', undecided], ['CUT', cut]].forEach(pair => {
+      if (!pair[1].length) return;
+      L.push('== ' + pair[0] + ' ==');
+      pair[1].forEach(p => {
+        const d = data[p.id] || {};
+        L.push('');
+        L.push((d.name || p.name).toUpperCase() + ' — ' + this.clusterMeta[p.c].name + (d.name !== p.name ? '  [renamed from ' + p.name + ']' : ''));
+        L.push('Premise: ' + (d.premise || ''));
+        L.push('Sample: ' + (d.sample || ''));
+      });
+      L.push('');
+    });
+    const written = Object.keys(lines).filter(k => (lines[k] || '').trim());
+    L.push('');
+    L.push('DRILL LINES — ' + written.length + ' written');
+    written.forEach(k => {
+      const dr = this.drills[Number(k)];
+      if (!dr) return;
+      const v = this.vinfo(dr.v);
+      L.push('');
+      L.push('[' + (Number(k) + 1) + '] ' + v.name + ', ' + dr.dir);
+      L.push('    Statement: ' + dr.st);
+      L.push('    Line: ' + lines[k].trim());
+      L.push('    (' + this.words(lines[k]) + ' words)');
+    });
+    return L.join('\n');
+  }
+
+  doExport() {
+    const text = this.buildText();
+    this.setState({ showExport:true, exportText:text, copied:false });
+    let p = null;
+    try { if (window.navigator.clipboard) p = window.navigator.clipboard.writeText(text); } catch (e) { p = null; }
+    if (p && p.then) p.then(() => this.setState({ copied:true })).catch(() => this.setState({ copied:false }));
+  }
+  doReset() {
+    const b = this.base();
+    this.setState({ data:b.data, verdicts:b.verdicts, showExport:false, copied:false });
+    try { window.localStorage.setItem(this.KEY, JSON.stringify({ data:b.data, verdicts:b.verdicts, lines:this.state.lines })); } catch (e) {}
+  }
+
+  renderVals() {
+    const data = this.state.data || {}, verdicts = this.state.verdicts || {}, lines = this.state.lines || {};
+    const i = this.state.i;
+    const dr = this.drills[i] || this.drills[0];
+    const v = this.vinfo(dr.v);
+    const mine = lines[i] || '';
+    const w = this.words(mine);
+    const written = Object.keys(lines).filter(k => (lines[k] || '').trim()).length;
+    const allWritten = Object.keys(lines).map(k => lines[k]).filter(s => (s || '').trim());
+    const avg = allWritten.length ? Math.round(allWritten.reduce((a, s) => a + this.words(s), 0) / allWritten.length) : 0;
+    const bankWords = 60 * 3 * 18;
+    const kept = this.proposals.filter(p => verdicts[p.id] === 'keep').length;
+    const cut = this.proposals.filter(p => verdicts[p.id] === 'cut').length;
+
+    return {
+      craft: this.craft,
+      approvedCount: 12 + kept,
+      pendingCount: this.proposals.length - kept - cut,
+      wordCount: (bankWords + allWritten.reduce((a, s) => a + this.words(s), 0)).toLocaleString(),
+      avgLen: avg || '—',
+
+      newClusters: ['ledger','marrow','choir','static'].map(ck => ({
+        name: this.clusterMeta[ck].name, color: this.clusterMeta[ck].color, note: this.clusterMeta[ck].note,
+        voices: this.proposals.filter(p => p.c === ck).map(p => {
+          const d = data[p.id] || {};
+          const verdict = verdicts[p.id];
+          return {
+            name: d.name || p.name, premise: d.premise || '', sample: d.sample || '',
+            color: p.color, gap: p.gap,
+            op: verdict === 'cut' ? '0.4' : '1',
+            border: verdict === 'keep' ? p.color : verdict === 'cut' ? '#DAD0BC' : '#96352A',
+            badge: verdict === 'keep' ? 'kept' : verdict === 'cut' ? 'cut' : 'proposed',
+            badgeBg: verdict === 'keep' ? '#2B2620' : 'transparent',
+            badgeFg: verdict === 'keep' ? '#F3EEE1' : '#6B6255',
+            keepBorder: verdict === 'keep' ? '#2B2620' : '#DAD0BC',
+            keepBg: verdict === 'keep' ? '#2B2620' : 'transparent',
+            keepFg: verdict === 'keep' ? '#F3EEE1' : '#6B6255',
+            cutBorder: verdict === 'cut' ? '#96352A' : '#DAD0BC',
+            cutBg: verdict === 'cut' ? '#96352A' : 'transparent',
+            cutFg: verdict === 'cut' ? '#F3EEE1' : '#6B6255',
+            onName: e => this.editVoice(p.id, 'name', e.target.value),
+            onPremise: e => this.editVoice(p.id, 'premise', e.target.value),
+            onSample: e => this.editVoice(p.id, 'sample', e.target.value),
+            keep: () => this.setVerdict(p.id, 'keep'),
+            cut: () => this.setVerdict(p.id, 'cut')
+          };
+        })
+      })),
+
+      drillNum: String(i + 1).padStart(2, '0') + ' / ' + this.drills.length,
+      drillStatement: dr.st,
+      drillMeta: dr.ax + ' · you are writing the reaction, not the statement',
+      drillVoice: v.name,
+      drillColor: v.color,
+      drillPremise: v.premise,
+      drillDirection: dr.dir,
+      drillNever: v.never,
+      drillWrong: v.wrong,
+      drillDiction: v.diction,
+      drillNote: dr.note,
+      drillText: mine,
+      onDrillText: e => this.setLine(i, e.target.value),
+      lenNote: w === 0 ? 'target 25–45 words' : w + ' words' + (w < 12 ? ' · short for this register' : w > 55 ? ' · long, check it earns it' : ' · in range'),
+      lenColor: w === 0 ? '#6B6255' : (w < 12 || w > 55) ? '#96352A' : '#2F5570',
+      showDraft: this.state.showDraft,
+      hideDraft: !this.state.showDraft,
+      revealDraft: () => this.setState({ showDraft:true }),
+      drillDraft: dr.draft,
+      draftLen: this.words(dr.draft),
+      draftNote: 'Mine is a floor, not a ceiling. If yours is worse, keep writing; if it is better, that is the point of the exercise.',
+      nextDrill: () => this.go(i + 1),
+      prevDrill: () => this.go(i - 1),
+      shuffleDrill: () => this.go(Math.floor(Math.random() * this.drills.length)),
+      drillWritten: written,
+      drillTotal: this.drills.length,
+      drillDots: this.drills.map((d, j) => {
+        const has = (lines[j] || '').trim();
+        const on = j === i;
+        return {
+          n: String(j + 1), title: this.vinfo(d.v).name + ' — ' + d.st.slice(0, 48),
+          bg: has ? '#2B2620' : 'transparent',
+          fg: has ? '#F3EEE1' : '#6B6255',
+          border: on ? '#96352A' : '#DAD0BC',
+          go: () => this.go(j)
+        };
+      }),
+
+      exportNote: written === 0 && kept === 0
+        ? 'Nothing decided yet. Keep or cut a few voices, write a line or two, then send it back and I will wire in whatever survived.'
+        : 'Kept ' + kept + ', cut ' + cut + ', ' + written + ' lines written. Paste this back to me and I will add the kept voices to the roster and put your lines into the grid verbatim.',
+      exportLabel: this.state.copied ? 'Copied to clipboard ✓' : 'Export decisions and lines',
+      doExport: () => this.doExport(),
+      doReset: () => this.doReset(),
+      showExport: this.state.showExport,
+      exportText: this.state.exportText
+    };
+  }
+}
+</script>
+</body>
+</html>

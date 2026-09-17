@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#F3EEE1;background-image:repeating-linear-gradient(to bottom,transparent,transparent 37px,rgba(43,38,32,.055) 37px,rgba(43,38,32,.055) 38px);font-family:"Source Serif 4",Georgia,serif;color:#2B2620}
+a{color:#2F5570;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:#96352A}
+</style></helmet>
+
+<div style="max-width:940px;margin:0 auto;padding:0 24px 80px">
+
+<div style="padding:56px 0 28px;border-bottom:1px solid #DAD0BC">
+<div style="font:600 .76rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#948A7A;margin-bottom:16px">Reference · Thought Compass · endings</div>
+<h1 style="margin:0 0 14px;font:500 clamp(2.1rem,4.5vw,3rem)/1.05 Newsreader,Georgia,serif">The Thought table</h1>
+<p style="margin:0;max-width:56ch;font:400 1.2rem/1.45 Newsreader,Georgia,serif;font-style:italic;color:#6B6255;text-wrap:pretty">Fourteen rows, all of them live in the build. This is the sheet to argue with.</p>
+<p style="margin:22px 0 0;padding-top:18px;border-top:1px dashed #DAD0BC;max-width:64ch;font:400 .84rem/1.8 'IBM Plex Mono',monospace;color:#6B6255"><b style="font-weight:600">How a run resolves —</b> every line any voice speaks is tallied. The voice with the highest count picks the row. Two voices level from different clusters takes the tie row; no voice speaking at all takes the silent row. Same answers always produce the same Thought.</p>
+</div>
+
+<div style="padding:36px 0 0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">I.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Twelve voice rows</h2></div>
+<p style="margin:0 0 26px;max-width:62ch;font:400 1rem/1.55 'Source Serif 4',serif;color:#6B6255">One per voice. The trait is the part I would push on hardest — it is the only field that claims to be mechanical, and nothing in the build reads it yet.</p>
+
+<sc-for list="{{ rows }}" as="t" hint-placeholder-count="12">
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 2px rgba(43,38,32,.12)">
+<div style="display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DAD0BC;padding-bottom:13px;margin-bottom:15px">
+<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+<span style="font:600 .68rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#948A7A">{{ t.n }}</span>
+<span style="font:500 1.32rem Newsreader,Georgia,serif;color:{{ t.color }}">{{ t.name }}</span>
+</div>
+<span style="font:400 .7rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#948A7A">{{ t.trigger }}</span>
+</div>
+<p style="margin:0 0 12px;font:400 1.02rem/1.45 Newsreader,Georgia,serif;font-style:italic;color:{{ t.color }};max-width:58ch">{{ t.epigraph }}</p>
+<p style="margin:0 0 15px;font:400 1rem/1.55 'Source Serif 4',serif;max-width:62ch;text-wrap:pretty">{{ t.body }}</p>
+<div style="display:flex;gap:12px;align-items:baseline;border-top:1px dashed #DAD0BC;padding-top:13px">
+<span style="flex:none;font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#948A7A">Trait</span>
+<span style="font:400 .92rem/1.5 'IBM Plex Mono',monospace;color:#96352A">{{ t.trait }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:20px 0 0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">II.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">Two fallback rows</h2></div>
+<p style="margin:0 0 26px;max-width:62ch;font:400 1rem/1.55 'Source Serif 4',serif;color:#6B6255">These exist so the ending never fails. The silent row is the one I care about — it is what you get for muting everyone, and it is the only place the piece says something about its own compass.</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px">
+<sc-for list="{{ fallbacks }}" as="t" hint-placeholder-count="2">
+<div style="background:#EAE2CF;border:1px dashed #DAD0BC;border-radius:4px;padding:20px 22px;box-shadow:0 1px 2px rgba(43,38,32,.12)">
+<div style="font:400 .7rem 'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;color:#948A7A;margin-bottom:8px">{{ t.trigger }}</div>
+<div style="font:500 1.28rem Newsreader,Georgia,serif;margin-bottom:11px;color:{{ t.color }}">{{ t.name }}</div>
+<p style="margin:0 0 12px;font:400 1rem/1.45 Newsreader,Georgia,serif;font-style:italic;color:{{ t.color }}">{{ t.epigraph }}</p>
+<p style="margin:0 0 14px;font:400 .98rem/1.55 'Source Serif 4',serif;text-wrap:pretty">{{ t.body }}</p>
+<div style="display:flex;gap:12px;align-items:baseline;border-top:1px dashed #DAD0BC;padding-top:12px">
+<span style="flex:none;font:600 .66rem 'IBM Plex Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#948A7A">Trait</span>
+<span style="font:400 .9rem/1.5 'IBM Plex Mono',monospace;color:#96352A">{{ t.trait }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="padding:44px 0 0;margin-top:36px;border-top:1px solid #DAD0BC">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font:400 1.1rem Newsreader,Georgia,serif;font-style:italic;color:#2F5570">III.</span><h2 style="margin:0;font:500 1.5rem Newsreader,Georgia,serif">The problem with fourteen</h2></div>
+<div style="display:flex;flex-wrap:wrap;gap:28px 44px;align-items:flex-start">
+<div style="flex:1 1 420px;min-width:0">
+<p style="margin:0 0 1em;font:400 1.06rem/1.6 'Source Serif 4',serif;max-width:64ch">Keying the ending to a single dominant voice is the cheap version, and it shows: whichever voice you left loudest wins nearly every run. Fourteen endings, and most players will see four.</p>
+<p style="margin:0 0 1em;font:400 1.06rem/1.6 'Source Serif 4',serif;max-width:64ch">The version worth building keys to the top <b>two</b> voices, ordered. Actuary over Solidarity is a different person from Solidarity over Actuary — the first made peace with the price, the second is still angry about it. Twelve voices taken two at a time, order mattering, is 132 rows, and the pairs that never co-occur simply never get written.</p>
+<p style="margin:0;font:400 1.06rem/1.6 'Source Serif 4',serif;max-width:64ch">That is the same coverage-grid problem as the statements, one layer up, and it is where the hundreds of combinations you described actually live. Four examples across the way, to see whether the shape holds.</p>
+</div>
+<div style="flex:0 1 300px;min-width:250px;display:flex;flex-direction:column;gap:16px;padding-top:4px">
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:16px 18px">
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#948A7A;margin-bottom:7px">Actuary › Solidarity</div>
+<div style="font:500 1.05rem Newsreader,Georgia,serif;margin-bottom:5px;color:#2F5570">The Price Of Us</div>
+<p style="margin:0;font:400 .86rem/1.5 'Source Serif 4',serif;color:#6B6255">You costed the collective and stayed anyway. Nobody thanks you for the spreadsheet.</p>
+</div>
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:16px 18px">
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#948A7A;margin-bottom:7px">Solidarity › Actuary</div>
+<div style="font:500 1.05rem Newsreader,Georgia,serif;margin-bottom:5px;color:#7A6A1E">The Invoice We Refused</div>
+<p style="margin:0;font:400 .86rem/1.5 'Source Serif 4',serif;color:#6B6255">You know the number. You have decided the number is an insult, and you are correct, and it is still the number.</p>
+</div>
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:16px 18px">
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#948A7A;margin-bottom:7px">Half-Light › Committee</div>
+<div style="font:500 1.05rem Newsreader,Georgia,serif;margin-bottom:5px;color:#5B4B6B">Emergency Powers, Correctly Filed</div>
+<p style="margin:0;font:400 .86rem/1.5 'Source Serif 4',serif;color:#6B6255">The dark is coming and there is a form for it. You have filled the form out. You feel no better.</p>
+</div>
+<div style="background:#EAE2CF;border:1px solid #DAD0BC;border-radius:4px;padding:16px 18px">
+<div style="font:600 .64rem 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#948A7A;margin-bottom:7px">Committee › Half-Light</div>
+<div style="font:500 1.05rem Newsreader,Georgia,serif;margin-bottom:5px;color:#5A6B3A">Minutes Of The Long Night</div>
+<p style="margin:0;font:400 .86rem/1.5 'Source Serif 4',serif;color:#6B6255">You will hold the meeting regardless. Somebody has to record what happened, even if nobody is left to read it.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="padding:30px 0 0;margin-top:34px;border-top:1px solid #DAD0BC;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font:400 .72rem 'IBM Plex Mono',monospace;color:#948A7A">
+<span>D. Tu, 2026. Companion to <a href="Voice Bible.dc.html">the voice bible</a>.</span>
+<span>Fourteen rows. One hundred and thirty-two possible.</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:940}}">
+class Component extends DCLogic {
+  voices = {
+    actuary:{ n:'Actuary', col:'#2F5570' }, histor:{ n:'Historiography', col:'#2F5570' },
+    badfaith:{ n:'Bad Faith', col:'#4A4A8C' }, adrenal:{ n:'Adrenal', col:'#96352A' },
+    hunger:{ n:'Hunger', col:'#8A5A22' }, fatigue:{ n:'Fatigue', col:'#6E5A44' },
+    committee:{ n:'Committee', col:'#5A6B3A' }, roomread:{ n:'Room Read', col:'#2F6B52' },
+    solidarity:{ n:'Solidarity', col:'#7A6A1E' }, supersti:{ n:'Superstition', col:'#4A3E8C' },
+    nostalgia:{ n:'Nostalgia', col:'#8C3A5A' }, halflight:{ n:'Half-Light', col:'#5B4B6B' }
+  };
+  order = ['actuary','histor','badfaith','adrenal','hunger','fatigue','committee','roomread','solidarity','supersti','nostalgia','halflight'];
+  thoughts = {
+    actuary:{ name:'A Ledger That Reads Back', ep:'The numbers never lie, the market never fails.',
+      body:'You stopped asking what things are worth and started asking what they go for. The two words feel identical now, which is the injury.',
+      trait:'Everything acquires a price, including what you would rather not have quoted.' },
+    histor:{ name:'The Minutes Of A Meeting Like This', ep:'Every ministry of information began as a reasonable answer to that question.',
+      body:'You can name the year it failed last time. You have not yet noticed that this is not the same as knowing what happens next.',
+      trait:'+2 to precedent. Cannot recognise a first time.' },
+    badfaith:{ name:'Nobody Asked You', ep:'That is a very quotable position. Which is what worries me about it.',
+      body:'You found the motive under the argument and mistook it for the answer. It works on everyone except the one holding it.',
+      trait:"Immunity to your own sincerity. And to everyone else's." },
+    adrenal:{ name:'Settle It Now', ep:'Openly. Loudly. Preferably today.',
+      body:'The waiting was the unbearable part, not the outcome. You have never once been asked to stay behind and clean up.',
+      trait:'+2 to arriving first. −2 to being there at the end.' },
+    hunger:{ name:'Rent Due Friday', ep:'Nobody who has earned it phrases it that way.',
+      body:'You remember the specific week. Everything since has been measured against not going back to it.',
+      trait:'You can price a room by looking at it. You cannot stop.' },
+    fatigue:{ name:'Fourth Year, Four A.M.', ep:'Say that again at four in the morning, in the fourth year.',
+      body:'You began treating your own exhaustion as evidence. Sometimes it is.',
+      trait:'+2 to noticing who is carrying it. −1 to volunteering.' },
+    committee:{ name:"The Clerk's Patience", ep:'Democracy dies in darkness.',
+      body:'You learned to want the meeting. Not the outcome of the meeting — the meeting.',
+      trait:'+2 to procedure. −1 to anything that has to happen today.' },
+    roomread:{ name:'How This Lands', ep:'Loudly plays badly in a room like this one. Just so you know.',
+      body:'You can feel the temperature of a room from the doorway. You have stopped being able to tell that from being right.',
+      trait:'+2 to reading the room. Cannot locate your own position in it.' },
+    solidarity:{ name:'The First Person Plural', ep:'We is a boundary. You just drew one.',
+      body:'You stopped being able to say I about anything that cost you something. You have not checked lately who else is inside the we.',
+      trait:'+2 to the collective claim. −2 to the awkward question about its edges.' },
+    supersti:{ name:'The Pattern Insists', ep:'Prices move like weather. Nobody calls weather honest.',
+      body:'You started seeing the shape of it, and the shape has not been wrong often enough for you to stop.',
+      trait:'+1 to everything, unreliably, at moments you cannot predict.' },
+    nostalgia:{ name:'The Bell You Remember', ep:'There was a bell. Everyone heard the same bell.',
+      body:'You can date the exact afternoon. You still cannot say who it was good for.',
+      trait:'+2 to the specific memory. −2 to who was not in it.' },
+    halflight:{ name:'The Long Night Argument', ep:'There is no afterwards. There is only the long night, and everyone out in it.',
+      body:'You prepared for the worst so thoroughly that preparation became the position. The dark did not have to arrive to win.',
+      trait:'+2 to preparation. −2 to trust.' }
+  };
+  renderVals() {
+    return {
+      rows: this.order.map((k, i) => {
+        const t = this.thoughts[k], v = this.voices[k];
+        return {
+          n: String(i + 1).padStart(2, '0'), name: t.name, color: v.col,
+          trigger: v.n + ' spoke most', epigraph: '“' + t.ep + '”',
+          body: t.body, trait: t.trait
+        };
+      }),
+      fallbacks: [
+        { trigger: 'Two voices level, different clusters', name: 'Settled By Tuesday', color: '#4A4A8C',
+          epigraph: '“A position you can hold in both directions is not a position, it is a comfort.”',
+          body: 'Two voices finished level. Nothing in you resolved, so nothing in you became permanent.',
+          trait: 'A position you can hold in both directions.' },
+        { trigger: 'No voice spoke at all', name: 'Static On All Channels', color: '#6E5A46',
+          epigraph: '',
+          body: 'You turned them all down. It is very quiet in here — and the compass still produced a dot, which ought to trouble you more than it does.',
+          trait: 'None. That was rather the point.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
