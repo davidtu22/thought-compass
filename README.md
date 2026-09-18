@@ -52,6 +52,50 @@ keyed to the ordered top two voices, with the dominant voice's share setting how
 landed. Unwritten pairs fall back to the single-voice row, so the table improves incrementally
 and never fails.
 
+## The shift: from instrument to stage
+
+I started this wanting a very customizable political compass test. I ended up wanting something
+closer to a chunk of *Disco Elysium* torn out and set down on its own, and the distance between
+those two things is most of the work.
+
+**What I was originally building.** A compass with more axes than the standard two, a question
+bank you could edit, adjustable voices commenting on each answer. The commentary was a layer on
+top of an instrument. The instrument was the point; the voices were the personality.
+
+**Where that broke.** The voices had nothing to push against. A scale answer — agree, strongly
+agree — isn't a position, it's a coordinate, and there's nothing in a coordinate for a character
+to have an opinion about. So the commentary came out as annotation: one clever line per voice per
+answer, technically responsive, structurally inert. I could feel it going stale within three
+playthroughs, and more statements wouldn't have fixed it, because the format was the ceiling.
+
+**What I diagnosed.** The thing that makes those games work isn't that the skills are witty. It's
+that there's *context* — a story, characters, scenarios — so nothing a voice says feels isolated
+or abrupt. Every line is contextual, and the answer options themselves are the writing: in
+*Disco Elysium* the choices don't feel like different ways of answering the same question, they
+feel like genuinely ideological and sometimes very funny representations of every way a real
+person might respond to a situation that's half serious and half absurd. Somebody once described
+it as reading like an infinite collection of good tweets. That's the register — and a survey
+scale cannot produce it, no matter how good the commentary layered on top is.
+
+**What I changed, in order.** Scales became scenarios with written answer options, each one an
+honest position rather than a degree of yes. Reactions stopped appearing the moment you touched
+an option — you have to lock in, because the tension lives in the commitment. The lines got
+longer, because a voice needs room to be specific. And then the decisive one: voices started
+addressing *each other* and bickering, and one per scene got permission to take the floor and
+ramble — to play a hypothetical all the way out over five paragraphs instead of landing a quip.
+
+**Where that leaves the compass.** Secondary, deliberately. I care much less about where someone
+falls on an axis than about the voices tearing into them for the answer they chose, no matter
+which one it was. That's the quippy, playful, slightly unbearable thing that makes those games
+engaging — the sense that your own head is an argument you are losing. The axes still work, the
+scoring is still honest, and the dot still lands somewhere. It's just no longer what the thing
+is for.
+
+**What this repo is actually a portfolio piece for.** Writing. The scenarios, the answer options,
+the voices, and the constraint system that makes a roster of twenty-five stay distinct across
+hundreds of lines. The architecture exists to serve that, and the worksheets in here are the part
+I'd point at first — they're the discipline, not the output.
+
 ## Design log
 
 Built across one long session. The sequence matters more than the feature list, because most
